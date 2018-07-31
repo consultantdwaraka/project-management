@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.project.management.bootstrap;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +11,7 @@ public class ProjectManagementApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		ProjectManagementApplication.main(new String[] {});
 	}
 
 }
