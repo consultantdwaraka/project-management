@@ -11,5 +11,7 @@ public interface TaskService {
 	public TaskDetails addTask(TaskDetails taskDetails);
 
 	public String deleteTask(String taskId);
+	
+	public TaskDetails endTask(String taskId);
 
 }

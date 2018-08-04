@@ -2,10 +2,13 @@ package com.project.management.bootstrap.api;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,20 +26,23 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
-
+	
+	@CrossOrigin
 	@RequestMapping(value = "/getProjects", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ResponseEntity<List<ProjectDetails>> getProjects() {
 		List<ProjectDetails> projectList = projectService.getProjects();
 		return new ResponseEntity<>(projectList, HttpStatus.OK);
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value = "/addProject", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ResponseEntity<ProjectDetails> getUsersList(@RequestBody ProjectDetails projectDetails) {
 		ProjectDetails projectDetailsResponse = projectService.addProject(projectDetails);
 		return new ResponseEntity<>(projectDetailsResponse, HttpStatus.OK);
 
 	}
-
+	
+	@CrossOrigin
 	@RequestMapping(value = "/deleteProject/{projectId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public  ResponseEntity<UserDetails> getUsersList(@PathVariable String projectId) {
 		this.projectService.deleteProject(projectId);

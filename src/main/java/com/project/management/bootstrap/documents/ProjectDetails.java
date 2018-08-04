@@ -20,6 +20,8 @@ public class ProjectDetails {
 	private String completedTasks;
 	
 	private String priority;
+	
+	private String managerId;
 
 	public String getId() {
 		return id;
@@ -76,6 +78,13 @@ public class ProjectDetails {
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-	
+
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
 	
 }

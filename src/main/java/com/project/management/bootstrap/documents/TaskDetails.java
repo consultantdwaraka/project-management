@@ -1,7 +1,12 @@
 package com.project.management.bootstrap.documents;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="TASK_DETAILS")
 public class TaskDetails {
 	
+	@Id
 	private String id;
 	
 	private String projectName;
@@ -17,6 +22,8 @@ public class TaskDetails {
 	private String endDate;
 	
 	private String userName;
+	
+	private String status;
 
 	public String getId() {
 		return id;
@@ -81,7 +88,13 @@ public class TaskDetails {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }

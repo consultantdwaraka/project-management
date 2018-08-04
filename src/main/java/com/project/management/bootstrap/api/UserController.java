@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class UserController {
 	@Autowired
 	private UserServie userService;
 
+	@CrossOrigin
 	@RequestMapping(value = "/getUsers", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<UserDetails>> getUsersList() {
 		List<UserDetails> userDetailsList = userService.getUsers();
@@ -29,6 +31,7 @@ public class UserController {
 
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/addUser", method = RequestMethod.PUT, produces = "application/json")
 	public @ResponseBody ResponseEntity<UserDetails> getUsersList(@RequestBody UserDetails userDetails) {
 		UserDetails userDetailsResponse = userService.saveUser(userDetails);
@@ -36,6 +39,7 @@ public class UserController {
 
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/deleteUser/{userId}", method = RequestMethod.DELETE, produces = "application/json")
 	public  ResponseEntity<UserDetails> getUsersList(@PathVariable String userId) {
 		this.userService.deleteUser(userId);

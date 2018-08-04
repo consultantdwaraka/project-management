@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class TaskController {
 	@Autowired
 	private TaskService taskService;
 
+	@CrossOrigin
 	@RequestMapping(value = "/getTasks", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<TaskDetails>> getTasks() {
 		final List<TaskDetails> taskList = taskService.getTasks();
@@ -31,13 +33,21 @@ public class TaskController {
 
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value = "/addTask", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody ResponseEntity<TaskDetails> addTask(@RequestBody TaskDetails taskDetails) {
 		TaskDetails taskDetailsResponse = taskService.addTask(taskDetails);
 		return new ResponseEntity<>(taskDetailsResponse, HttpStatus.OK);
-
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/endTask", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody ResponseEntity<TaskDetails> completeTask(@RequestBody TaskDetails taskDetails) {
+		TaskDetails taskDetailsResponse = taskService.endTask(taskDetails.getId());
+		return new ResponseEntity<>(taskDetailsResponse, HttpStatus.OK);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/deleteTask/{taskId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public  ResponseEntity<UserDetails> deleteTask(@PathVariable String taskId) {
 		this.taskService.deleteTask(taskId);
