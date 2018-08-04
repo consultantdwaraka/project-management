@@ -3,14 +3,14 @@ package com.project.management.bootstrap.api;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.apache.catalina.filters.CorsFilter;
 import org.junit.Before;
@@ -28,9 +28,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.google.gson.Gson;
-import com.project.management.bootstrap.documents.ProjectDetails;
 import com.project.management.bootstrap.documents.TaskDetails;
-import com.project.management.bootstrap.services.TaskService;
 import com.project.management.bootstrap.services.TaskServiceImpl;
 
 @RunWith(SpringRunner.class)
@@ -105,6 +103,28 @@ public class TaskControllerTest {
 		when(taskService.deleteTask("1")).thenReturn("1");
 		this.mockMvc.perform(delete("/services/v1/deleteTask/1").accept(MediaType.APPLICATION_JSON)
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+
+	}
+	
+	@Test
+	public void testEndTask() throws Exception {
+		
+		TaskDetails taskDetails = new TaskDetails();
+		taskDetails.setId("1");
+		taskDetails.setEndDate("");
+		taskDetails.setStartDate("");
+		taskDetails.setParentTask("");
+		taskDetails.setTaskName("");
+		taskDetails.setPriority("");
+		taskDetails.setUserName("");
+
+		Gson gson = new Gson();
+
+		when(taskService.endTask(taskDetails.getId())).thenReturn(taskDetails);
+		this.mockMvc
+				.perform(post("/services/v1/endTask").accept(MediaType.APPLICATION_JSON)
+						.contentType(MediaType.APPLICATION_JSON).content(gson.toJson(taskDetails)))
+				.andExpect(status().isOk()).andReturn();
 
 	}
 
