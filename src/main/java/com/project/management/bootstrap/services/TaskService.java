@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.project.management.bootstrap.documents.TaskDetails;
 
+/**
+ * @author Dwaraka Konangi
+ *
+ */
 public interface TaskService {
 
 	public List<TaskDetails> getTasks();

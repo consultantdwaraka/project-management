@@ -24,6 +24,8 @@ public class TaskDetails {
 	private String userName;
 	
 	private String status;
+	
+	private String parentTaskDesc;
 
 	public String getId() {
 		return id;
@@ -97,4 +99,11 @@ public class TaskDetails {
 		this.status = status;
 	}
 
+	public String getParentTaskDesc() {
+		return parentTaskDesc;
+	}
+
+	public void setParentTaskDesc(String parentTaskDesc) {
+		this.parentTaskDesc = parentTaskDesc;
+	}
 }

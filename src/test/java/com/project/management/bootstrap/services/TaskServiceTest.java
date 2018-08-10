@@ -20,6 +20,10 @@ import com.project.management.bootstrap.documents.TaskDetails;
 import com.project.management.bootstrap.repo.TaskRepository;
 import com.project.management.bootstrap.utils.StatusEnum;
 
+/**
+ * @author Dwaraka Konangi
+ *
+ */
 @RunWith(SpringRunner.class)
 public class TaskServiceTest {
 
@@ -47,6 +51,8 @@ public class TaskServiceTest {
 		taskDetails.setParentTask("");
 		taskDetails.setPriority("");
 		taskDetails.setUserName("");
+		taskDetails.setProjectName("");
+		taskDetails.setParentTaskDesc("");
 
 		List<TaskDetails> taskDetailList = new ArrayList<>();
 		taskDetailList.add(taskDetails);

@@ -21,6 +21,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.project.management.bootstrap.documents.UserDetails;
 import com.project.management.bootstrap.repo.UserRepository;
 
+/**
+ * @author Dwaraka Konangi
+ *
+ */
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
 

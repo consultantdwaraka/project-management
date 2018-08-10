@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.project.management.bootstrap.documents.ProjectDetails;
 import com.project.management.bootstrap.repo.ProjectRepository;
 
+/**
+ * @author Dwaraka Konangi
+ *
+ */
 @Service
 public class ProjectServiceImpl implements ProjectService {
 

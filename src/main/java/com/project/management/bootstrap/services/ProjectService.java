@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.project.management.bootstrap.documents.ProjectDetails;
 
+/**
+ * @author Dwaraka Konangi
+ *
+ */
 public interface ProjectService {
 
 	public List<ProjectDetails> getProjects();
